@@ -4,25 +4,25 @@ public enum RestrictedQueryParamsMembers {
     /**
      * Set of collection's fields used for filtering
      */
-    filter,
+    FILTER,
     /**
      * Set of collection's fields used for sorting
      */
-    sort,
+    SORT,
     /**
      * Field to group by the collection
      */
-    group,
+    GROUP,
     /**
      * Pagination properties
      */
-    page,
+    PAGE,
     /**
      * List of specified fields to include in models
      */
-    fields,
+    FIELDS,
     /**
      * Additional resources that should be attached to response
      */
-    include
+    INCLUDE
 }

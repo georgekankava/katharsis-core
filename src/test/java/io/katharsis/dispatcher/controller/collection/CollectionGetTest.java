@@ -179,7 +179,7 @@ public class CollectionGetTest extends BaseControllerTest {
         JsonPath jsonPath = pathBuilder.buildPath("/tasks/" + taskId );
         ResourceGet responseGetResp = new ResourceGet(resourceRegistry, typeParser, includeFieldSetter);
         Map<String, Set<String>> queryParams = new HashMap<>();
-        queryParams.put(RestrictedQueryParamsMembers.include.name() + "[tasks]",
+        queryParams.put(RestrictedQueryParamsMembers.INCLUDE.name() + "[tasks]",
             Collections.singleton("includedProjects"));
         QueryParams queryParams1 = new QueryParamsBuilder(new DefaultQueryParamsParser()).buildQueryParams(queryParams);
 
@@ -261,7 +261,7 @@ public class CollectionGetTest extends BaseControllerTest {
         JsonPath jsonPath = pathBuilder.buildPath("/tasks/" + taskId );
         ResourceGet responseGetResp = new ResourceGet(resourceRegistry, typeParser, includeFieldSetter);
         Map<String, Set<String>> queryParams = new HashMap<>();
-        queryParams.put(RestrictedQueryParamsMembers.include.name() + "[tasks]",
+        queryParams.put(RestrictedQueryParamsMembers.INCLUDE.name() + "[tasks]",
             Collections.singleton("[\"projects\"]"));
         QueryParams requestParams = new QueryParamsBuilder(new DefaultQueryParamsParser()).buildQueryParams(queryParams);
 

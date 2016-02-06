@@ -20,7 +20,7 @@ public class DefaultQueryParamsParserTest {
     @Test
     public void onGivenFiltersParserShouldReturnOnlyRequestParamsWithFilters() {
         // GIVEN
-        queryParams.put("filter[users][name]", Collections.singleton("John"));
+        queryParams.put("FILTER[users][name]", Collections.singleton("John"));
         queryParams.put("random[users][name]", Collections.singleton("John"));
 
         // WHEN
@@ -28,29 +28,29 @@ public class DefaultQueryParamsParserTest {
 
         // THEN
         assertThat(result.entrySet().size()).isEqualTo(1);
-        assertThat(result.entrySet().iterator().next().getKey().startsWith("filter"));
+        assertThat(result.entrySet().iterator().next().getKey().startsWith("FILTER"));
         assertThat(result.entrySet().iterator().next().getValue().equals(Collections.singleton("John")));
     }
 
     @Test
     public void onGivenSortingParserShouldReturnOnlyRequestParamsWithSorting() {
         // GIVEN
-        queryParams.put("sort[users][name]", Collections.singleton("asc"));
-        queryParams.put("random[users][name]", Collections.singleton("desc"));
+        queryParams.put("SORT[users][name]", Collections.singleton("ASC"));
+        queryParams.put("random[users][name]", Collections.singleton("DESC"));
 
         // WHEN
         Map<String, Set<String>> result = parser.parseSortingParameters(queryParams);
 
         // THEN
         assertThat(result.entrySet().size()).isEqualTo(1);
-        assertThat(result.entrySet().iterator().next().getKey().startsWith("sort"));
-        assertThat(result.entrySet().iterator().next().getValue().equals(Collections.singleton("asc")));
+        assertThat(result.entrySet().iterator().next().getKey().startsWith("SORT"));
+        assertThat(result.entrySet().iterator().next().getValue().equals(Collections.singleton("ASC")));
     }
 
     @Test
     public void onGivenGroupingParserShouldReturnOnlyRequestParamsWithGrouping() {
         // GIVEN
-        queryParams.put("group[users]", Collections.singleton("name"));
+        queryParams.put("GROUP[users]", Collections.singleton("name"));
         queryParams.put("random[users]", Collections.singleton("surname"));
 
         // WHEN
@@ -58,32 +58,32 @@ public class DefaultQueryParamsParserTest {
 
         // THEN
         assertThat(result.entrySet().size()).isEqualTo(1);
-        assertThat(result.entrySet().iterator().next().getKey().startsWith("group"));
+        assertThat(result.entrySet().iterator().next().getKey().startsWith("GROUP"));
         assertThat(result.entrySet().iterator().next().getValue().equals(Collections.singleton("name")));
     }
 
     @Test
     public void onGivenPaginationParserShouldReturnOnlyRequestParamsWithPagination() {
         // GIVEN
-        queryParams.put("page[offset]", Collections.singleton("1"));
-        queryParams.put("page[limit]", Collections.singleton("10"));
-        queryParams.put("random[offset]", Collections.singleton("2"));
-        queryParams.put("random[limit]", Collections.singleton("20"));
+        queryParams.put("PAGE[OFFSET]", Collections.singleton("1"));
+		queryParams.put("PAGE[LIMIT]", Collections.singleton("10"));
+        queryParams.put("random[OFFSET]", Collections.singleton("2"));
+        queryParams.put("random[LIMIT]", Collections.singleton("20"));
 
         // WHEN
         Map<String, Set<String>> result = parser.parsePaginationParameters(queryParams);
 
         // THEN
         assertThat(result.entrySet().size()).isEqualTo(2);
-        assertThat(result.get("page[offset]").equals(Collections.singleton("1")));
-        assertThat(result.get("page[limit]").equals(Collections.singleton("10")));
+        assertThat(result.get("PAGE[OFFSET]").equals(Collections.singleton("1")));
+        assertThat(result.get("PAGE[LIMIT]").equals(Collections.singleton("10")));
     }
 
     ////////
     @Test
     public void onGivenIncludedFieldsParserShouldReturnOnlyRequestParamsWithIncludedFields() {
         // GIVEN
-        queryParams.put("fields[users]", Collections.singleton("name"));
+        queryParams.put("FIELDS[users]", Collections.singleton("name"));
         queryParams.put("random[users]", Collections.singleton("surname"));
 
         // WHEN
@@ -91,14 +91,14 @@ public class DefaultQueryParamsParserTest {
 
         // THEN
         assertThat(result.entrySet().size()).isEqualTo(1);
-        assertThat(result.entrySet().iterator().next().getKey().startsWith("fields"));
+		assertThat(result.entrySet().iterator().next().getKey().startsWith("FIELDS"));
         assertThat(result.entrySet().iterator().next().getValue().equals(Collections.singleton("name")));
     }
 
     @Test
     public void onGivenIncludedRelationsParserShouldReturnOnlyRequestParamsWithIncludedRelations() {
         // GIVEN
-        queryParams.put("include[user]", Collections.singleton("name"));
+        queryParams.put("INCLUDE[user]", Collections.singleton("name"));
         queryParams.put("random[user]", Collections.singleton("surname"));
 
         // WHEN
@@ -106,7 +106,7 @@ public class DefaultQueryParamsParserTest {
 
         // THEN
         assertThat(result.entrySet().size()).isEqualTo(1);
-        assertThat(result.entrySet().iterator().next().getKey().startsWith("include"));
+        assertThat(result.entrySet().iterator().next().getKey().startsWith("INCLUDE"));
         assertThat(result.entrySet().iterator().next().getValue().equals(Collections.singleton("name")));
     }
 

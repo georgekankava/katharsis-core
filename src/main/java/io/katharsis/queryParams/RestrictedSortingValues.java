@@ -7,9 +7,9 @@ public enum RestrictedSortingValues {
     /**
      * Ascending order
      */
-    asc,
+    ASC,
     /**
      * Descending
      */
-    desc
+	DESC
 }

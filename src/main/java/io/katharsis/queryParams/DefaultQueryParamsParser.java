@@ -27,37 +27,37 @@ public class DefaultQueryParamsParser implements QueryParamsParser {
 
     @Override
     public Map<String, Set<String>> parseFiltersParameters(final Map<String, Set<String>> queryParams) {
-        String filterKey = RestrictedQueryParamsMembers.filter.name();
+        String filterKey = RestrictedQueryParamsMembers.FILTER.name();
         return filterQueryParamsByKey(queryParams, filterKey);
     }
 
     @Override
     public Map<String, Set<String>> parseSortingParameters(final Map<String, Set<String>> queryParams) {
-        String sortingKey = RestrictedQueryParamsMembers.sort.name();
+        String sortingKey = RestrictedQueryParamsMembers.SORT.name();
         return filterQueryParamsByKey(queryParams, sortingKey);
     }
 
     @Override
     public Map<String, Set<String>> parseGroupingParameters(final Map<String, Set<String>> queryParams) {
-        String groupingKey = RestrictedQueryParamsMembers.group.name();
+        String groupingKey = RestrictedQueryParamsMembers.GROUP.name();
         return filterQueryParamsByKey(queryParams, groupingKey);
     }
 
     @Override
     public Map<String, Set<String>> parseIncludedFieldsParameters(final Map<String, Set<String>> queryParams) {
-        String sparseKey = RestrictedQueryParamsMembers.fields.name();
+        String sparseKey = RestrictedQueryParamsMembers.FIELDS.name();
         return filterQueryParamsByKey(queryParams, sparseKey);
     }
 
     @Override
     public Map<String, Set<String>> parseIncludedRelationsParameters(final Map<String, Set<String>> queryParams) {
-        String includeKey = RestrictedQueryParamsMembers.include.name();
+        String includeKey = RestrictedQueryParamsMembers.INCLUDE.name();
         return filterQueryParamsByKey(queryParams, includeKey);
     }
 
     @Override
     public Map<String, Set<String>> parsePaginationParameters(final Map<String, Set<String>> queryParams) {
-        String pagingKey = RestrictedQueryParamsMembers.page.name();
+        String pagingKey = RestrictedQueryParamsMembers.PAGE.name();
         return filterQueryParamsByKey(queryParams, pagingKey);
     }
 

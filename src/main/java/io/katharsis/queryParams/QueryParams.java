@@ -49,7 +49,7 @@ public class QueryParams {
 
         for (Map.Entry<String, Set<String>> entry : filters.entrySet()) {
 
-            List<String> propertyList = buildPropertyListFromEntry(entry, RestrictedQueryParamsMembers.filter.name());
+            List<String> propertyList = buildPropertyListFromEntry(entry, RestrictedQueryParamsMembers.FILTER.name());
 
             String resourceType = propertyList.get(0);
             String propertyPath = StringUtils.join(".", propertyList.subList(1, propertyList.size()));
@@ -99,7 +99,7 @@ public class QueryParams {
 
         for (Map.Entry<String, Set<String>> entry : sorting.entrySet()) {
 
-            List<String> propertyList = buildPropertyListFromEntry(entry, RestrictedQueryParamsMembers.sort.name());
+            List<String> propertyList = buildPropertyListFromEntry(entry, RestrictedQueryParamsMembers.SORT.name());
 
             String resourceType = propertyList.get(0);
             String propertyPath = StringUtils.join(".", propertyList.subList(1, propertyList.size()));
@@ -156,7 +156,7 @@ public class QueryParams {
 
         for (Map.Entry<String, Set<String>> entry : grouping.entrySet()) {
 
-            List<String> propertyList = buildPropertyListFromEntry(entry, RestrictedQueryParamsMembers.group.name());
+            List<String> propertyList = buildPropertyListFromEntry(entry, RestrictedQueryParamsMembers.GROUP.name());
 
             if (propertyList.size() > 1) {
                 throw new ParametersDeserializationException("Exceeded maximum level of nesting of 'group' parameter " +
@@ -210,7 +210,7 @@ public class QueryParams {
         Map<RestrictedPaginationKeys, Integer> decodedPagination = new LinkedHashMap<>();
 
         for (Map.Entry<String, Set<String>> entry : pagination.entrySet()) {
-            List<String> propertyList = buildPropertyListFromEntry(entry, RestrictedQueryParamsMembers.page.name());
+            List<String> propertyList = buildPropertyListFromEntry(entry, RestrictedQueryParamsMembers.PAGE.name());
 
             if (propertyList.size() > 1) {
                 throw new ParametersDeserializationException("Exceeded maximum level of nesting of 'page' parameter " +
@@ -253,7 +253,7 @@ public class QueryParams {
         Map<String, Set<String>> temporarySparseMap = new LinkedHashMap<>();
 
         for (Map.Entry<String, Set<String>> entry : sparse.entrySet()) {
-            List<String> propertyList = buildPropertyListFromEntry(entry, RestrictedQueryParamsMembers.fields.name());
+            List<String> propertyList = buildPropertyListFromEntry(entry, RestrictedQueryParamsMembers.FIELDS.name());
 
             if (propertyList.size() > 1) {
                 throw new ParametersDeserializationException("Exceeded maximum level of nesting of 'fields' " +
@@ -308,7 +308,7 @@ public class QueryParams {
         Map<String, Set<Inclusion>> temporaryInclusionsMap = new LinkedHashMap<>();
 
         for (Map.Entry<String, Set<String>> entry : inclusions.entrySet()) {
-            List<String> propertyList = buildPropertyListFromEntry(entry, RestrictedQueryParamsMembers.include.name());
+            List<String> propertyList = buildPropertyListFromEntry(entry, RestrictedQueryParamsMembers.INCLUDE.name());
 
             if (propertyList.size() > 1) {
                 throw new ParametersDeserializationException("Exceeded maximum level of nesting of 'include' " +

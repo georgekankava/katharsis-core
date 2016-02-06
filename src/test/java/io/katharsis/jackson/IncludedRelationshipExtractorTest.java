@@ -123,7 +123,7 @@ public class IncludedRelationshipExtractorTest {
     @Test
     public void onInclusionWithDefaultInclusionShouldReturnOneElement() throws Exception {
         // GIVEN
-        QueryParams queryParams = getRequestParamsWithInclusion("include[classAsWithInclusion]",
+        QueryParams queryParams = getRequestParamsWithInclusion("INCLUDE[classAsWithInclusion]",
             "classBsWithInclusion");
 
         ResourceResponse response = new ResourceResponse(null, new ResourcePath("classAsWithInclusion"), queryParams,
@@ -141,7 +141,7 @@ public class IncludedRelationshipExtractorTest {
     @Test
     public void onInclusionShouldReturnOneElement() throws Exception {
         // GIVEN
-        QueryParams queryParams = getRequestParamsWithInclusion("include[classAs]",
+        QueryParams queryParams = getRequestParamsWithInclusion("INCLUDE[classAs]",
             "classBs");
 
         ResourceResponse response = new ResourceResponse(null, new ResourcePath("classAs"), queryParams,
@@ -159,7 +159,7 @@ public class IncludedRelationshipExtractorTest {
     @Test
     public void onDifferentTypeInclusionShouldReturnNoElements() throws Exception {
         // GIVEN
-        QueryParams queryParams = getRequestParamsWithInclusion("include[classBsWith]",
+        QueryParams queryParams = getRequestParamsWithInclusion("INCLUDE[classBsWith]",
             "classCsWith");
 
         ResourceResponse response = new ResourceResponse(null, new ResourcePath("classAsWith"), queryParams,

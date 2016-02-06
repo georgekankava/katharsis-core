@@ -64,7 +64,7 @@ public class ContainerSerializerTest extends BaseSerializerTest {
 
         QueryParamsBuilder queryParamsBuilder = new QueryParamsBuilder(new DefaultQueryParamsParser());
         QueryParams queryParams = queryParamsBuilder.buildQueryParams(
-            Collections.singletonMap("fields[projects]", Collections.singleton("name")));
+            Collections.singletonMap("FIELDS[projects]", Collections.singleton("name")));
         JsonPath jsonPath = new PathBuilder(resourceRegistry).buildPath("/projects");
 
         // WHEN
@@ -87,7 +87,7 @@ public class ContainerSerializerTest extends BaseSerializerTest {
 
         QueryParamsBuilder queryParamsBuilder = new QueryParamsBuilder(new DefaultQueryParamsParser());
         QueryParams queryParams = queryParamsBuilder.buildQueryParams(
-            Collections.singletonMap("fields[tasks]", Collections.singleton("project")));
+            Collections.singletonMap("FIELDS[tasks]", Collections.singleton("project")));
         JsonPath jsonPath = new PathBuilder(resourceRegistry).buildPath("/tasks");
 
         // WHEN
@@ -110,7 +110,7 @@ public class ContainerSerializerTest extends BaseSerializerTest {
 
         QueryParamsBuilder queryParamsBuilder = new QueryParamsBuilder(new DefaultQueryParamsParser());
         QueryParams queryParams = queryParamsBuilder.buildQueryParams(
-            Collections.singletonMap("fields[projects]", Collections.singleton("name")));
+            Collections.singletonMap("FIELDS[projects]", Collections.singleton("name")));
         JsonPath jsonPath = new PathBuilder(resourceRegistry).buildPath("/tasks");
 
         // WHEN

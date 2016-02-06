@@ -25,7 +25,7 @@ public class QueryParamsBuilderTest {
     @Test
     public void onGivenFiltersBuilderShouldReturnRequestParamsWithFilters() throws ParametersDeserializationException {
         // GIVEN
-        queryParams.put("filter[users][name]", Collections.singleton("John"));
+        queryParams.put("FILTER[users][name]", Collections.singleton("John"));
 
         // WHEN
         QueryParams result = sut.buildQueryParams(queryParams);
@@ -45,7 +45,7 @@ public class QueryParamsBuilderTest {
     @Test
     public void onGivenSortingBuilderShouldReturnRequestParamsWithSorting() throws ParametersDeserializationException {
         // GIVEN
-        queryParams.put("sort[users][name]", Collections.singleton("asc"));
+        queryParams.put("SORT[users][name]", Collections.singleton("ASC"));
 
         // WHEN
         QueryParams result = sut.buildQueryParams(queryParams);
@@ -59,7 +59,7 @@ public class QueryParamsBuilderTest {
             .getParams()
             .get("users")
             .getParams()
-            .get("name")).isEqualTo(RestrictedSortingValues.asc);
+            .get("name")).isEqualTo(RestrictedSortingValues.ASC);
 
     }
 
@@ -67,7 +67,7 @@ public class QueryParamsBuilderTest {
     public void onGivenGroupingBuilderShouldReturnRequestParamsWithGrouping() throws
         ParametersDeserializationException {
         // GIVEN
-        queryParams.put("group[users]", Collections.singleton("name"));
+        queryParams.put("GROUP[users]", Collections.singleton("name"));
 
         // WHEN
         QueryParams result = sut.buildQueryParams(queryParams);
@@ -90,24 +90,24 @@ public class QueryParamsBuilderTest {
     public void onGivenPaginationBuilderShouldReturnRequestParamsWithPagination() throws
         ParametersDeserializationException {
         // GIVEN
-        queryParams.put("page[offset]", Collections.singleton("0"));
-        queryParams.put("page[limit]", Collections.singleton("10"));
+        queryParams.put("PAGE[OFFSET]", Collections.singleton("0"));
+        queryParams.put("PAGE[LIMIT]", Collections.singleton("10"));
 
         // WHEN
         QueryParams result = sut.buildQueryParams(queryParams);
 
         // THEN
         assertThat(result.getPagination()
-            .get(RestrictedPaginationKeys.offset)).isEqualTo(0);
+            .get(RestrictedPaginationKeys.OFFSET)).isEqualTo(0);
         assertThat(result.getPagination()
-            .get(RestrictedPaginationKeys.limit)).isEqualTo(10);
+            .get(RestrictedPaginationKeys.LIMIT)).isEqualTo(10);
     }
 
     @Test
     public void onGivenIncludedFieldsBuilderShouldReturnRequestParamsWithIncludedFields() throws
         ParametersDeserializationException {
         // GIVEN
-        queryParams.put("fields[users]", Collections.singleton("name"));
+        queryParams.put("FIELDS[users]", Collections.singleton("name"));
 
         // WHEN
         QueryParams result = sut.buildQueryParams(queryParams);
@@ -129,7 +129,7 @@ public class QueryParamsBuilderTest {
     public void onGivenIncludedRelationsBuilderShouldReturnRequestParamsWithIncludedRelations() throws
         ParametersDeserializationException {
         // GIVEN
-        queryParams.put("include[special-users]", Collections.singleton("friends"));
+        queryParams.put("INCLUDE[special-users]", Collections.singleton("friends"));
 
         // WHEN
         QueryParams result = sut.buildQueryParams(queryParams);
